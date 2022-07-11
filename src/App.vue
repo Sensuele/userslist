@@ -1,39 +1,11 @@
 <template>
-  <div class="container">
-    <div class="wrapper">
-      <button class="btn" :disabled="isLoading" @click="getUsers">Download data</button>
-      <Circle v-show="isLoading" style="width: 30px; height: 30px; margin-left: 20px;"></Circle>
-    </div>
-    <user-list
-      v-if="!isLoading"
-      :users="sortedUsers"
-      />
-
-  </div>
+ <div class="container">
+  <router-view></router-view>
+ </div>
 </template>
 
 <script>
-import UserList from './components/UserList.vue';
- import {Circle} from 'vue-loading-spinner'
-import { mapActions, mapGetters, mapState } from 'vuex';
-export default {
-  components: { UserList, Circle },
-  computed: {
-    ...mapState({
-      users: state => state.user.users,
-      isLoading: state => state.user.isLoading
-    }),
-    ...mapGetters({
-      sortedUsers: 'sortedUsers'
-    }),
-  },
 
-  methods: {
-    ...mapActions({
-      getUsers: 'getUsers',
-    }),
-  }
-};
 </script>
 
 <style>
@@ -62,7 +34,19 @@ body {
   cursor: default;
 }
 
+.btn-logout {
+  background: white;
+  color: #455368;
+  border: 1px solid #81ACFF;
+}
+
 .wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.download-btn {
   display: flex;
   align-items: center;
 }

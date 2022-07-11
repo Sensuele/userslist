@@ -8,8 +8,6 @@
           <span style="color: red">{{ user.completed.false }}</span>
         </div>
       </div>
-      
-
       <ul>
         <li v-for="(todo, index) in user.title" v-bind:key="index">
           {{ todo }}
