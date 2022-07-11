@@ -10,14 +10,18 @@
       v-if="!isLoading"
       :users="sortedUsers"
       />
+    <BarChart v-if="users.length > 0" />
+
 </template>
 
 <script>
 import UserList from '@/components/UserList.vue';
+import BarChart from '@/components/BarChart.vue';
 import {Circle} from 'vue-loading-spinner'
 import { mapActions, mapGetters, mapState } from 'vuex';
+
 export default {
-  components: { UserList, Circle },
+  components: { UserList, Circle, BarChart },
   computed: {
     ...mapState({
       users: state => state.user.users,
@@ -27,6 +31,7 @@ export default {
       sortedUsers: 'sortedUsers'
     }),
   },
+  
 
   methods: {
     ...mapActions({
