@@ -24,7 +24,6 @@ import {
   CategoryScale,
   LinearScale
 } from 'chart.js'
-import { mapActions, mapGetters } from 'vuex'
 
 ChartJS.register(Title, Tooltip, Legend, BarElement, CategoryScale, LinearScale)
 
@@ -61,62 +60,16 @@ export default {
     plugins: {
       type: Array,
       default: () => []
-    }
-  },
-  data() {
-    return {
-    
-      chartOptions: {
-        responsive: true,
-        maintainAspectRatio: false,
-        scales: {
-        x: {
-          stacked: true,
-        },
-        y: {
-          stacked: false
-        }
-      }
-      },
-      title: {
-          display: true,
-          text: 'Oversikt'
-        },
-        
+    },
+    chartData: {
+      type: Object,
+      required: true
+    },
+    chartOptions: {
+      type: Object,
+      default: null
     }
   },
 
-   computed: {
-    ...mapGetters({
-      formedUsersId: 'formedUsersId'
-    }),
-
-      chartData() {
-        return {
-        labels: this.formedUsersId.users,
-        datasets: [
-          {
-            label: 'Completed = true',
-            backgroundColor: 'blue',
-            data: this.formedUsersId.completed
-          }, 
-          {
-            label: 'Total',
-            backgroundColor: '#f87979',
-            data: this.formedUsersId.total
-          }
-        ]
-        }
-      },
-  },
-
-  mounted() {
-    // console.log(this.$store.getters.formedUsersId)
-  },
-   methods: {
-    ...mapActions({
-      getUsers: 'getUsers',
-    }),
-  }
 }
 </script>

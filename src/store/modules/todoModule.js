@@ -37,10 +37,9 @@ export const todoModule = {
       if (!getters.formedList) {
         return;
       }
-      const users = getters.formedList.map(item => item.userId);
+      const users = getters.formedList.map(item => 'User ' + item.userId);
       const total = getters.formedList.map(item => item.completed.total);
       const completed = getters.formedList.map(item => item.completed.true)
-
       function Users(users, total, completed) {
         this.users = users;
         this.total = total;
