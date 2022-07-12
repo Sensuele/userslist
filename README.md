@@ -1,4 +1,5 @@
-# userslist
+Checkout the project by the link
+https://sensuele.github.io/userslist/
 
 ## Project setup
 ```
