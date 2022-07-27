@@ -1,6 +1,8 @@
 Checkout the project by the link
 https://sensuele.github.io/userslist/
 
+There is fake auth so you can use any creds.
+
 ## Project setup
 ```
 npm install
